@@ -1,16 +1,20 @@
-from hamcrest import *
-from textwrap import dedent
-import pytest
 import day02
 
+from textwrap import dedent
+
+from hamcrest import *
+
+
 def test_day02():
-    day02_input = dedent("""\
+    day02_input = dedent(
+        """\
         7 6 4 2 1
         1 2 7 8 9
         9 7 6 2 1
         1 3 2 4 5
         8 6 4 4 1
-        1 3 6 7 9""")
+        1 3 6 7 9"""
+    )
 
     lines = day02.parse_input(day02_input)
     assert_that(next(lines), contains_exactly(7, 6, 4, 2, 1))
@@ -33,7 +37,8 @@ def test_day02():
         (9, 7, 6, 2, 1),
         (1, 3, 2, 4, 5),
         (8, 6, 4, 4, 1),
-        (1, 3, 6, 7, 9))
+        (1, 3, 6, 7, 9),
+    )
     assert_that(day02.part1(lines), is_(2))
 
     assert_that(day02.safe2(x for x in (7, 6, 4, 2, 1)), is_(True))
@@ -44,4 +49,3 @@ def test_day02():
     assert_that(day02.safe2(x for x in (1, 3, 6, 7, 9)), is_(True))
 
     assert_that(day02.part2(lines), is_(4))
-
